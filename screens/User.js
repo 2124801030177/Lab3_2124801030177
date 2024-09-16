@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import{StyleSheet, Text, View, ActivityIndicator, } from 'react-native';
-import { fetchUserContacts } from "../utility/api";
+import { fetchUserContact } from "../utility/api";
 import ContactThumbnail from "../components/ContactThumbnail";
 import colors from "../utility/colors";
 
 const User = ()=>
 {
     const [user, setUser] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        fetchUserContacts()
+        fetchUserContact()
         .then(
             users=>{
                 setContacts(users);
@@ -31,7 +31,7 @@ const User = ()=>
         <View style={styles.container}>
                 {loading && <ActivityIndicator color = "blue" size = "large"/>}
                 {error && <Text>Error...</Text>}
-                {!loading && !error (
+                {!loading && !error && (
                     <ContactThumbnail avatar={avatar} name={name} phone={phone} />
                 )}
         </View>

@@ -10,45 +10,45 @@ const keyExtractor = ({phone}) => phone;
 
 const Contacts = ({navigation})=>
 {
-    // const [contacts, setContacts] = useState([]);
-    // const [loading, setLoading] = useState(false);
-    // const [error, setError] = useState(false);
-    // // const {contact} = route.params;
-    // useEffect(() => {
-    //     fetchContacts()
-    //     .then(
-    //         contacts=>{
-    //             setContacts(contacts);
-    //             setLoading(false);
-    //             setError(false);
-    //         }
-    //     )
-    //     .catch(
-    //         e=>{
-    //             console.log(e);
-    //             setLoading(false);
-    //             setError(true);
-    //         }
-    //     )
-    // }, [])
-
-    const {contacts, loading, error} = useSelector((state)=>state);
-    const dispatch = useDispatch();
-
-    useEffect(()=>{
-        dispatch(fetchContactsLoading());
+    const [contacts, setContacts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    // const {contact} = route.params;
+    useEffect(() => {
         fetchContacts()
         .then(
             contacts=>{
-                dispatch(fetchContactsSuccess(contacts));
+                setContacts(contacts);
+                setLoading(false);
+                setError(false);
             }
         )
         .catch(
             e=>{
-                dispatch(fetchContactsError());
+                console.log(e);
+                setLoading(false);
+                setError(true);
             }
         )
-    },[])
+    }, [])
+
+    // const {contacts, loading, error} = useSelector((state)=>state);
+    // const dispatch = useDispatch();
+
+    // useEffect(()=>{
+    //     dispatch(fetchContactsLoading());
+    //     fetchContacts()
+    //     .then(
+    //         contacts=>{
+    //             dispatch(fetchContactsSuccess(contacts));
+    //         }
+    //     )
+    //     .catch(
+    //         e=>{
+    //             dispatch(fetchContactsError());
+    //         }
+    //     )
+    // },[])
 
     const contactsSorted = contacts.slice().sort((a, b) => a.name.localeCompare(b.name));
     const renderContact = ({item}) =>{

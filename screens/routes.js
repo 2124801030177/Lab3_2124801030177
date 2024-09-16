@@ -10,7 +10,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Contacts from './Contacts';
 import Profile from './Profile';
 
-const getDrawerItemIcon = icon = ()=> ({tintColor}) => (
+const getDrawerItemIcon = icon => ({tintColor}) => (
     <MaterialIcons name={icon} size={22} style={{color: tintColor}} />
 );
 
@@ -69,7 +69,7 @@ const UserScreens = ({navigation})=>
 {
     return (
         <Stack.Navigator
-            initialRouteName='user'
+            initialRouteName='User'
         >
                 <Stack.Screen  name='User' component={User}
                     options={{

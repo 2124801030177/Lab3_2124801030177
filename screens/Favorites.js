@@ -13,27 +13,27 @@ import { useDispatch,  useSelector } from "react-redux";
 const keyExtractor = ({phone}) => phone;
 const Favorites = ({navigation}) =>
 {
-    // const [contacts, setContacts] = useState([]);
-    // const [loading, setLoading] = useState(false);
-    // const [error, setError] = useState(false);
-    // useEffect(() => {
-    //     fetchContacts()
-    //     .then(
-    //         contacts=>{
-    //             setContacts(contacts);
-    //             setLoading(false);
-    //             setError(false);
-    //         }
-    //     )
-    //     .catch(
-    //         e=>{
-    //             setLoading(false);
-    //             setError(true);
-    //         }
-    //     )
-    // });
+    const [contacts, setContacts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    useEffect(() => {
+        fetchContacts()
+        .then(
+            contacts=>{
+                setContacts(contacts);
+                setLoading(false);
+                setError(false);
+            }
+        )
+        .catch(
+            e=>{
+                setLoading(false);
+                setError(true);
+            }
+        )
+    });
 
-    const {contacts, loading, error} = useSelector((state)=>state);
+    // const {contacts, loading, error} = useSelector((state)=>state);
 
     const renderFavoriteThumbnail = ({item}) =>{
         const { avatar } = item;
